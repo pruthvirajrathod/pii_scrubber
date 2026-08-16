@@ -24,7 +24,7 @@ module PiiScrubber
         masked_user = mask_value(user, mask_char: mask_char)
         domain_parts = domain.split(".")
         masked_domain_name = mask_value(domain_parts[0], mask_char: mask_char)
-        tld = domain_parts[1..].join(".")
+        tld = domain_parts[1..-1].join(".")
 
         "#{masked_user}@#{masked_domain_name}.#{tld}"
       end

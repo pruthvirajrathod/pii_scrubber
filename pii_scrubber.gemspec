@@ -13,7 +13,7 @@ Gem::Specification.new do |spec|
   spec.summary       = 'Fast, flexible international PII & secret redaction and reversible LLM anonymization for Ruby and Rails.'
   spec.description   = 'Detects and sanitizes Personally Identifiable Information (emails, phone numbers, credit cards, SSNs, IP addresses, IBANs, UK NINOs, Canadian SINs, Indian PAN & Aadhaar) and API secrets / Database connection strings in strings, hashes, logs, Faraday HTTP requests, and Rack. Features a bidirectional Vault for LLM prompt anonymization and response restoration.'
   spec.license       = 'MIT'
-  spec.required_ruby_version = '>= 3.0.0'
+  spec.required_ruby_version = '>= 2.7.0'
 
   spec.files         = Dir['{exe,lib}/**/*', 'README.md', 'LICENSE.txt', 'Rakefile']
   spec.bindir        = 'exe'

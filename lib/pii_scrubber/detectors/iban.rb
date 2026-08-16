@@ -31,7 +31,7 @@ module PiiScrubber
         return super if sanitized.length < 8
 
         prefix = sanitized[0..3] # Country code + check digits
-        suffix = sanitized[-4..]
+        suffix = sanitized[-4..-1]
         masked_middle = mask_char * (sanitized.length - 8)
         "#{prefix}#{masked_middle}#{suffix}"
       end
@@ -41,7 +41,7 @@ module PiiScrubber
       # ISO 7064 Modulo 97-10 checksum validation
       def modulo97_valid?(iban)
         # Move first 4 characters (country + check digits) to the end
-        rearranged = iban[4..] + iban[0..3]
+        rearranged = iban[4..-1] + iban[0..3]
 
         # Convert letters to digits: A=10, B=11, ..., Z=35
         num_str = rearranged.each_char.map do |ch|
