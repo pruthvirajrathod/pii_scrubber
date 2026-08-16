@@ -1,7 +1,8 @@
 # 🛡️ PiiScrubber
 
-[![Gem Version](https://badge.fury.io/rb/pii_scrubber.svg)](https://badge.fury.io/rb/pii_scrubber)
-[![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)](https://opensource.org/licenses/MIT)
+[![Gem Version](https://img.shields.io/gem/v/pii_scrubber.svg?color=blue)](https://rubygems.org/gems/pii_scrubber)
+[![Gem Downloads](https://img.shields.io/gem/dt/pii_scrubber.svg?color=orange)](https://rubygems.org/gems/pii_scrubber)
+[![License: MIT](https://img.shields.io/badge/License-MIT-green.svg)](https://opensource.org/licenses/MIT)
 
 **PiiScrubber** is a high-performance, pluggable Ruby gem for detecting and sanitizing Personally Identifiable Information (PII) and API secrets from strings, nested data structures, Rails logs, Faraday HTTP requests, and LLM prompt contexts.
 
