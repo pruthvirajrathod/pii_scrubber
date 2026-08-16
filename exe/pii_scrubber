@@ -1,0 +1,48 @@
+#!/usr/bin/env ruby
+# frozen_string_literal: true
+
+require "optparse"
+require_relative "../lib/pii_scrubber"
+
+options = {
+  strategy: :placeholder,
+  mask_char: "*"
+}
+
+OptionParser.new do |opts|
+  opts.banner = "Usage: pii_scrubber [options] [file...]"
+
+  opts.on("-s", "--strategy STRATEGY", %i[placeholder mask hash], "Redaction strategy: placeholder, mask, or hash") do |s|
+    options[:strategy] = s
+  end
+
+  opts.on("-m", "--mask-char CHAR", "Mask character (default: '*')") do |c|
+    options[:mask_char] = c
+  end
+
+  opts.on("-v", "--version", "Show version") do
+    puts "pii_scrubber v#{PiiScrubber::VERSION}"
+    exit
+  end
+
+  opts.on("-h", "--help", "Prints this help") do
+    puts opts
+    exit
+  end
+end.parse!
+
+def process_stream(stream, options)
+  stream.each_line do |line|
+    print PiiScrubber.scrub(line, **options)
+  end
+end
+
+if ARGV.empty?
+  process_stream($stdin, options)
+else
+  ARGV.each do |filename|
+    File.open(filename, "r") do |file|
+      process_stream(file, options)
+    end
+  end
+end
